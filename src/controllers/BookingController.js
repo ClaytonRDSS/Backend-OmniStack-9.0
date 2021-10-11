@@ -14,6 +14,8 @@ module.exports = {
 
          await booking.populate('spot').populate('user').execPopulate();
 
+         //console.log(booking);
+
         return res.json(booking);
     }
 };
