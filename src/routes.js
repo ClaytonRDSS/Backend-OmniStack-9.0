@@ -24,6 +24,7 @@ routes.post('/spots', upload.single('thumbnail'), SpotController.store);
 routes.get('/dashboard', DashboardController.show);
 
 routes.post('/spots/:spot_id/bookings', BookingController.store);
+routes.get('/spots/bookings', BookingController.show);
 
 
 //modulo de exportação das rotas

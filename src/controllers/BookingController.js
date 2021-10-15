@@ -17,5 +17,14 @@ module.exports = {
          //console.log(booking);
 
         return res.json(booking);
+    },
+
+    async show(req, res) {
+        const { user_id } = req.headers;
+        
+        const Bookings = await Booking.find({ user: user_id}).populate('user').populate('spot');
+
+        return res.json(Bookings);
     }
+    
 };

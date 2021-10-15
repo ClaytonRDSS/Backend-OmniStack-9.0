@@ -3,10 +3,21 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 
+const socketio = require('socket.io');
+const http = require('http');
+
 const routes = require('./routes');
 
 
 const app = express();
+const server = http.Server(app);
+const io = socketio(server);
+
+io.on('connection', socket => {
+
+    console.log('Usuario conectado', socket.id);
+
+});
 
 mongoose.connect('mongodb+srv://thiago:thiago27@omnistack.aegif.mongodb.net/omnistack?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -21,4 +32,4 @@ app.use(routes);
 
 
 //Localhost:3333
-app.listen(3333);
+server.listen(3333);
